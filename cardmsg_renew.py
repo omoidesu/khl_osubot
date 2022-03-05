@@ -1,13 +1,13 @@
-from pydub.audio_segment import AudioSegment
-from file import colorStar, getFile, getProjectImage, mapDownload , upload
-from api import *
-from sql import *
-from mods import *
-from pp import *
-from card import *
-import aiohttp , datetime , time
-from pyttanko import mods_apply , diff_calc
+import datetime
+
 from pydub import AudioSegment
+from pydub.audio_segment import AudioSegment
+
+from api import *
+from card import *
+from file import colorStar, getProjectImage, mapDownload, upload
+from mods import *
+from sql import *
 
 flags = {
     'A':'🇦','B':'🇧','C':'🇨','D':'🇩','E':'🇪','F':'🇫','G':'🇬',
@@ -211,6 +211,8 @@ async def infoCard(bot , osu_id , mode = 0):
     
     info = await getApiInfo('info' , id = osu_id , mode = GM[mode])
     if not info:
+        return False
+    elif isinstance(info, str):
         return False
     country = ""
     esql = osusql()

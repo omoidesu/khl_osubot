@@ -1,18 +1,13 @@
-from collections import UserDict
 
-from aiohttp.client import request
-from khl.message import BtnTextMsg
-from math import e
-from khl import TextMsg, Bot, Cert
-import time , json, re, base64
+import json
+import re
 
-# from matplotlib.pyplot import text
-
-from sql import osusql
 from api import *
-from funcs import *
-# from cardmsg import *
 from cardmsg_renew import *
+from funcs import *
+from khl import Bot, Cert, TextMsg
+from khl.message import BtnTextMsg
+from sql import osusql
 
 FGM = {'osu' : 0 , 'taiko' : 1 , 'fruits' : 2 , 'mania' : 3, 'std' : 1, 'fruit' : 2, 'ctb' : 2, 'catch': 2}
 GM = {0 : 'osu', 1 : 'taiko', 2 : 'fruits', 3 : 'mania'}

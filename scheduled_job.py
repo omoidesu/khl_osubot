@@ -1,8 +1,9 @@
-import time , aiohttp, asyncio
+import asyncio
+import time
+
 from api import getAccessToken
 from funcs import user
 from sql import osusql
-
 
 esql = osusql()
 
@@ -16,8 +17,11 @@ async def update_token():
 
 async def update_sql():
     result = esql.get_all_id()
-    for n , uid in enumerate(result):
-        await user(uid[0] , True)
+    try:
+        for n , uid in enumerate(result):
+            await user(uid[0] , True)
+    except:
+        pass
     now = time.strftime("%H:%M:%S")
     return f"<{now}> sql update success"
 
