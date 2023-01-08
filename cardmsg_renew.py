@@ -92,7 +92,7 @@ class scorejson:
         self.cgeki = self.count['count_geki']
         self.ckatu = self.count['count_katu']
         self.rank = info['rank']
-        self.createtime = info['created_at'].replace("T" , " ")[:-6]
+        self.createtime = info['created_at'].replace("T" , " ")[:-1]
         self.startTime = datetime.datetime.strptime(self.createtime, "%Y-%m-%d %H:%M:%S")
         self.playTime = (self.startTime + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")
         self.pp = info['pp']
@@ -248,7 +248,8 @@ async def infoCard(bot , osu_id , mode = 0):
     sh = str(g_counts['sh']) if len(str(g_counts['sh'])) != 1 else str(g_counts['sh']) + '  '
     s = str(g_counts['s']) if len(str(g_counts['s'])) != 1 else str(g_counts['s']) + '  '
     a = str(g_counts['a']) if len(str(g_counts['a'])) != 1 else str(g_counts['a']) + '  '
-    crank = play['country_rank'] if play['country_rank'] else 0
+    # crank = play['country_rank'] if play['country_rank'] else 0
+    crank = play.get('country_rank', 0)
     if supporter:
         spt = ":heart: "
     else:spt = ":black_heart: "
