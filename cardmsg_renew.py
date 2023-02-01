@@ -184,7 +184,11 @@ def modText(mods):
 
 
 def infoCalc(n1 , n2 , rank=False , pp=False , acc=False):
-    num = n1 - n2
+    try:
+        num = n1 - n2
+    except TypeError as e:
+        num = 0
+
     if num <0:
         if rank:
             return f'(↑{str(num * -1)})'
